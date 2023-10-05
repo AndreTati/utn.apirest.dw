@@ -1,5 +1,6 @@
 package com.utn.apirest.Entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,7 +16,7 @@ public class Domicilio extends Base{
 
     private String calle;
     private int numero;
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="localidad_id")
     private Localidad localidad;
 }

@@ -1,9 +1,6 @@
 package com.utn.apirest.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,7 @@ public class Libro extends Base{
     private int paginas;
     private String autor;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name="libro-autor",
     joinColumns = @JoinColumn(name="libro_id"),
     inverseJoinColumns = @JoinColumn(name="autor_id"))

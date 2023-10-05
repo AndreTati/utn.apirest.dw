@@ -16,11 +16,12 @@ public class Persona extends Base{
     private String apellido;
     private int dni;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "persona_id")
+    @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
     @JoinColumn(name="persona_id")
     private List<Libro> libros=new ArrayList<>();
+    
 
 }
